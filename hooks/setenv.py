@@ -36,6 +36,11 @@ def reconfigure(options=None,buildout=None):
         'sed -e "s/\$ac_cache_corrupted/ [[ "a" == "b" ]] /g" -i %s' % (
             os.path.join(options['compile-directory'],'saslauthd','configure')
         )
+    ) 
+    os.system(
+        'sed -e "s/-lresolv/-lresolv -ldb-4.8/g" -i %s' % (
+            os.path.join(options['compile-directory'],'saslauthd','configure')
+        )
     )
     os.system(
         'sed -e "s/\$ac_cache_corrupted/ [[ "a" == "b" ]] /g" -i %s' % (
